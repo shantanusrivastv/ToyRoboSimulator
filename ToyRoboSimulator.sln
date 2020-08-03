@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRoboSimulator.Client", "ToyRoboSimulator.Client\ToyRoboSimulator.Client.csproj", "{CDBE5A42-F7BF-44AE-99EA-375FC2EBA60C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRoboSimulator.Core", "ToyRoboSimulator.Core\ToyRoboSimulator.Core.csproj", "{47FBFB4E-AAFD-4B3B-9EE7-B7F2243D66D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRoboSimulator.Core.Tests", "ToyRoboSimulator.Core.Tests\ToyRoboSimulator.Core.Tests.csproj", "{9A8BECE6-171A-419D-8EA6-16426E18801F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRoboSimulator.Enums", "ToyRoboSimulator.Enums\ToyRoboSimulator.Enums.csproj", "{FBE383EA-620A-4AAF-86CC-ED8FBEA11AC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDBE5A42-F7BF-44AE-99EA-375FC2EBA60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBE5A42-F7BF-44AE-99EA-375FC2EBA60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBE5A42-F7BF-44AE-99EA-375FC2EBA60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBE5A42-F7BF-44AE-99EA-375FC2EBA60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FBFB4E-AAFD-4B3B-9EE7-B7F2243D66D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FBFB4E-AAFD-4B3B-9EE7-B7F2243D66D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FBFB4E-AAFD-4B3B-9EE7-B7F2243D66D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FBFB4E-AAFD-4B3B-9EE7-B7F2243D66D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8BECE6-171A-419D-8EA6-16426E18801F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8BECE6-171A-419D-8EA6-16426E18801F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8BECE6-171A-419D-8EA6-16426E18801F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8BECE6-171A-419D-8EA6-16426E18801F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE383EA-620A-4AAF-86CC-ED8FBEA11AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE383EA-620A-4AAF-86CC-ED8FBEA11AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE383EA-620A-4AAF-86CC-ED8FBEA11AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE383EA-620A-4AAF-86CC-ED8FBEA11AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75376909-CA58-46AC-8C0D-669F333D103A}
+	EndGlobalSection
+EndGlobal
