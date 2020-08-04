@@ -2,7 +2,6 @@
 {
     public enum MoveType
     {
-        
         PLACE = 1,
         MOVE,
         LEFT,

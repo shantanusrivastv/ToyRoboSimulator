@@ -47,7 +47,6 @@ namespace ToyRoboSimulator.Core
 
                         case MoveType.REPORT:
                             break;
-
                     }
                 }
                 return CurrentPosition;

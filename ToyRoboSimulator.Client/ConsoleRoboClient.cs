@@ -47,8 +47,8 @@ namespace ToyRoboSimulator.Client
                             case MoveType.LEFT:
                             case MoveType.RIGHT:
                             case MoveType.MOVE:
-                                Console.Clear();
                                 _simulator.MoveRobo(moveChoice.ToString());
+                                Console.Clear();
                                 Console.Write($"Successfully performed the {moveChoice} command!! ");
                                 DisplayCommands();
                                 break;
