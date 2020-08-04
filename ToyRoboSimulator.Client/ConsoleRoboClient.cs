@@ -54,7 +54,7 @@ namespace ToyRoboSimulator.Client
                                 break;
 
                             default:
-                                break;
+                                return;
                         }
                     }
                     else
