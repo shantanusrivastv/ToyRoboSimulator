@@ -6,12 +6,12 @@ namespace ToyRoboSimulator.Core.Tests
     [TestFixture]
     public class ValidatorTest
     {
-        private Validator sut;
+        private Validator _sut;
 
         [SetUp]
         public void Setup()
         {
-            sut = new Validator();
+            _sut = new Validator();
         }
 
         [TestCase("PLACE 0,0,NORTH")]
@@ -24,7 +24,7 @@ namespace ToyRoboSimulator.Core.Tests
         [TestCase("REPORT")]
         public void ShouldReturnTrueForValidCommand(string command)
         {
-            var res = sut.ValidateInputCommand(command);
+            var res = _sut.ValidateInputCommand(command);
             Assert.IsTrue(res);
         }
 
@@ -36,7 +36,7 @@ namespace ToyRoboSimulator.Core.Tests
         [TestCase("MOVE LEFT")]
         public void ShouldReturnFalseForInvalidValidCommand(string command)
         {
-            var res = sut.ValidateInputCommand(command);
+            var res = _sut.ValidateInputCommand(command);
             Assert.IsFalse(res);
         }
     }
