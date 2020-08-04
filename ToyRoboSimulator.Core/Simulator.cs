@@ -106,9 +106,6 @@ namespace ToyRoboSimulator.Core
                 case Direction.WEST:
                     MoveLeft();
                     break;
-
-                    //default:
-                    //    break;
             }
         }
 
