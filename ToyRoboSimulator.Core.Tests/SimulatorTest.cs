@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Core.Tests
@@ -14,6 +15,12 @@ namespace ToyRoboSimulator.Core.Tests
         public void Setup()
         {
             sut = new Simulator(new Validator());
+        }
+
+        [TestCase("MOVE")]
+        public void ShouldThrowExceptionIfFirstCommandIsNotPLACE(string command)
+        {
+            Assert.Throws<Exception>(() => sut.MoveRobo(command));
         }
 
         [TestCase("MOVE", 4)]

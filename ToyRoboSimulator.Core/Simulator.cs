@@ -19,20 +19,6 @@ namespace ToyRoboSimulator.Core
             _validator = validator;
         }
 
-        //public Simulator(string command, IValidator validator)
-        //{
-        //    _validator = validator;
-        //    if (validator.ValidateFirstCommand(command))
-        //    {
-        //        SetPosition(command);
-        //        //continue
-        //    }
-        //    else
-        //    {
-        //        //Make Custom Exception
-        //        throw new Exception("InValid Command");
-        //    }
-        //}
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string moveCommand)
         {
@@ -92,7 +78,7 @@ namespace ToyRoboSimulator.Core
             else
             {
                 //Make Custom Exception
-                throw new Exception("InValid Command");
+                //throw new Exception("InValid Command");
             }
         }
 

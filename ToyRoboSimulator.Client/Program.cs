@@ -15,8 +15,7 @@ namespace ToyRoboSimulator.Client
             IServiceScope scope = _serviceProvider.CreateScope();
             scope.ServiceProvider.GetRequiredService<ConsoleRoboClient>().Run();
             DisposeServices();
-            Console.WriteLine("Click key to close the console");
-            Console.ReadKey();
+            Console.WriteLine("Closing the client");
         }
 
         private static void RegisterServices()
@@ -34,9 +33,9 @@ namespace ToyRoboSimulator.Client
             {
                 return;
             }
-            if (_serviceProvider is IDisposable)
+            if (_serviceProvider is IDisposable disposable)
             {
-                ((IDisposable)_serviceProvider).Dispose();
+                disposable.Dispose();
             }
         }
     }
