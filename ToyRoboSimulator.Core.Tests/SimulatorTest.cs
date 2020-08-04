@@ -6,144 +6,145 @@ namespace ToyRoboSimulator.Core.Tests
     [TestFixture]
     public class SimulatorTest
     {
-        private Simulator sut;
-        private readonly byte xPostion = 0;
-        private readonly byte yPostion = 0;
+        private Simulator _sut;
+        private readonly byte _xPosition = 0;
+        private readonly byte _yPosition = 0;
 
         [SetUp]
         public void Setup()
         {
-            sut = new Simulator(new Validator());
+            _sut = new Simulator(new Validator());
         }
 
         [TestCase("MOVE")]
-        public void ShouldThrowExceptionIfFirstCommandIsNotPLACE(string command)
+        public void ShouldThrowExceptionIfFirstCommandIsNotPlace(string command)
         {
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo(command);
-            Assert.AreEqual(default(byte), XAxis);
-            Assert.AreEqual(default(byte), YAxis);
-            Assert.AreEqual(Direction.SOUTH, CurrentDirection);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo(command);
+            Assert.AreEqual(default(byte), xAxis);
+            Assert.AreEqual(default(byte), yAxis);
+            Assert.AreEqual(Direction.SOUTH, currentDirection);
         }
 
         [TestCase("MOVE", 4)]
         public void ShouldMoveUpByGivenNoOfSteps(string moves, int steps)
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo("PLACE 0,0,NORTH");
             for (int i = 0; i <= steps; i++)
             {
-                sut.MoveRobo(moves);
+                _sut.MoveRobo(moves);
             }
 
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(xPostion, XAxis);
-            Assert.AreEqual(yPostion + steps, YAxis);
-            Assert.AreEqual(Direction.NORTH, CurrentDirection);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(_xPosition, xAxis);
+            Assert.AreEqual(_yPosition + steps, yAxis);
+            Assert.AreEqual(Direction.NORTH, currentDirection);
         }
 
         [TestCase("MOVE", 5)]
         public void ShouldMoveUpButNotFall(string moves, int steps)
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo("PLACE 0,0,NORTH");
             for (int i = 0; i <= steps; i++)
             {
-                sut.MoveRobo(moves);
+                _sut.MoveRobo(moves);
             }
 
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(xPostion, XAxis);
-            Assert.AreEqual(4, YAxis);
-            Assert.AreEqual(Direction.NORTH, CurrentDirection);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(_xPosition, xAxis);
+            Assert.AreEqual(4, yAxis);
+            Assert.AreEqual(Direction.NORTH, currentDirection);
         }
 
         [TestCase("RIGHT")]
         public void ShouldMoveRight(string moves)
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
-            sut.MoveRobo(moves);
+            _sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo(moves);
 
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(xPostion, XAxis);
-            Assert.AreEqual(yPostion, YAxis);
-            Assert.AreEqual(Direction.EAST, CurrentDirection);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(_xPosition, xAxis);
+            Assert.AreEqual(_yPosition, yAxis);
+            Assert.AreEqual(Direction.EAST, currentDirection);
         }
 
         [TestCase("LEFT")]
         public void ShouldMoveLeft(string moves)
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
-            sut.MoveRobo(moves);
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(xPostion, XAxis);
-            Assert.AreEqual(0, YAxis);
-            Assert.AreEqual(Direction.WEST, CurrentDirection);
+            _sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo(moves);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(_xPosition, xAxis);
+            Assert.AreEqual(0, yAxis);
+            Assert.AreEqual(Direction.WEST, currentDirection);
         }
 
         [TestCase("PLACE 2,4,WEST")]
         public void ShoulPlaceRoboInPosition(string command)
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
-            sut.MoveRobo(command);
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(2, XAxis);
-            Assert.AreEqual(4, YAxis);
-            Assert.AreEqual(Direction.WEST, CurrentDirection);
+            _sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo(command);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(2, xAxis);
+            Assert.AreEqual(4, yAxis);
+            Assert.AreEqual(Direction.WEST, currentDirection);
         }
 
         [Test]
-        public void ShouldMoveMulipleSteps()
+        public void ShouldMoveMultipleSteps()
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(0, XAxis);
-            Assert.AreEqual(2, YAxis);
-            Assert.AreEqual(Direction.NORTH, CurrentDirection);
+            _sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(0, xAxis);
+            Assert.AreEqual(2, yAxis);
+            Assert.AreEqual(Direction.NORTH, currentDirection);
         }
 
         [Test]
-        public void ShouldRotateAndMoveMulipleSteps()
+        public void ShouldRotateAndMoveMultipleSteps()
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo("PLACE 0,0,NORTH");
 
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("RIGHT");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("RIGHT");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("LEFT");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("RIGHT");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("RIGHT");
-            sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("RIGHT");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("RIGHT");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("LEFT");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("RIGHT");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("RIGHT");
+            _sut.MoveRobo("MOVE");
 
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(2, XAxis);
-            Assert.AreEqual(1, YAxis);
-            Assert.AreEqual(Direction.WEST, CurrentDirection);
+
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(2, xAxis);
+            Assert.AreEqual(1, yAxis);
+            Assert.AreEqual(Direction.WEST, currentDirection);
         }
 
         [Test]
-        public void ShouldMoveMulipleStepsWithoutFalling()
+        public void ShouldMoveMultipleStepsWithoutFalling()
         {
-            sut.MoveRobo("PLACE 0,0,NORTH");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
-            sut.MoveRobo("MOVE");
+            _sut.MoveRobo("PLACE 0,0,NORTH");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
+            _sut.MoveRobo("MOVE");
 
-            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
-            Assert.AreEqual(0, XAxis);
-            Assert.AreEqual(4, YAxis);
-            Assert.AreEqual(Direction.NORTH, CurrentDirection);
+            var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
+            Assert.AreEqual(0, xAxis);
+            Assert.AreEqual(4, yAxis);
+            Assert.AreEqual(Direction.NORTH, currentDirection);
         }
     }
 }

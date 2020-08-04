@@ -6,7 +6,7 @@ namespace ToyRoboSimulator.Core
     public class Simulator : ISimulator
     {
         private readonly IValidator _validator;
-        private bool hasApplicationInitialised = false;
+        private bool _hasApplicationInitialised;
 
         private (byte XAxis, byte YAxis, Direction CurrentDirection) CurrentPosition
         {
@@ -21,13 +21,13 @@ namespace ToyRoboSimulator.Core
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string moveCommand)
         {
-            if (hasApplicationInitialised)
+            if (_hasApplicationInitialised)
             {
                 if (_validator.ValidateInputCommand(moveCommand))
                 {
-                    Enum RequestedMoveType = (MoveType)Enum.Parse(typeof(MoveType), moveCommand.Split(' ', ',')[0]);
+                    Enum requestedMoveType = (MoveType)Enum.Parse(typeof(MoveType), moveCommand.Split(' ', ',')[0]);
 
-                    switch (RequestedMoveType)
+                    switch (requestedMoveType)
                     {
                         case MoveType.MOVE:
                             PerformMove();
@@ -53,21 +53,21 @@ namespace ToyRoboSimulator.Core
             }
             else
             {
-                CheckIfFirstCommandIsPLACE(moveCommand);
+                CheckIfFirstCommandIsPlace(moveCommand);
                 return CurrentPosition;
             }
         }
 
-        private void CheckIfFirstCommandIsPLACE(string command)
+        private void CheckIfFirstCommandIsPlace(string command)
         {
             if (_validator.ValidateFirstCommand(command))
             {
                 SetPosition(command);
-                hasApplicationInitialised = true;
+                _hasApplicationInitialised = true;
             }
             else
             {
-                hasApplicationInitialised = false;
+                _hasApplicationInitialised = false;
             }
         }
 
@@ -92,7 +92,7 @@ namespace ToyRoboSimulator.Core
             switch (CurrentPosition.CurrentDirection)
             {
                 case Direction.NORTH:
-                    MoveUP();
+                    MoveUp();
                     break;
 
                 case Direction.SOUTH:
@@ -120,7 +120,7 @@ namespace ToyRoboSimulator.Core
             }
         }
 
-        private void MoveUP()
+        private void MoveUp()
         {
             if (CurrentPosition.YAxis < 4)
             {

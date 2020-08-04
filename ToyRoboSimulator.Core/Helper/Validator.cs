@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ToyRoboSimulator.Core.Helper
 {
@@ -6,49 +7,41 @@ namespace ToyRoboSimulator.Core.Helper
     {
         public bool ValidateFirstCommand(string command)
         {
-            //TOdoMove to common Property to resuse it
-            string[] commandSplit = command.Split(' ', ',');
+
+            var commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
             if (commandType != MoveType.PLACE.ToString() && commandSplit.Length != 4)
             {
                 return false;
             }
-            else
-            {
-                return ValidateParameters(commandSplit);
-            }
+
+            return ValidateParameters(commandSplit);
         }
 
         public bool ValidateInputCommand(string command)
         {
-            string[] commandSplit = command.Split(' ', ',');
+            var commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
             if (commandType != MoveType.PLACE.ToString() && commandSplit.Length > 1)
             {
                 return false;
             }
-            else if (commandType == MoveType.PLACE.ToString())
-            {
-                return ValidateParameters(commandSplit);
-            }
 
-            return Enum.IsDefined(typeof(MoveType), commandType);
+            return commandType == MoveType.PLACE.ToString() ? ValidateParameters(commandSplit) : Enum.IsDefined(typeof(MoveType), commandType);
         }
 
-        private bool ValidateParameters(string[] commandSplit)
+        private bool ValidateParameters(IReadOnlyList<string> commandSplit)
         {
-            if (commandSplit.Length != 4)
+            if (commandSplit.Count != 4)
             {
                 return false;
             }
-            else
-            {
-                return CoOrdinateValidator(commandSplit[1]) &&
-                       CoOrdinateValidator(commandSplit[2]) &&
-                       Enum.IsDefined(typeof(Direction), commandSplit[3]);
-            }
+
+            return CoOrdinateValidator(commandSplit[1]) &&
+                   CoOrdinateValidator(commandSplit[2]) &&
+                   Enum.IsDefined(typeof(Direction), commandSplit[3]);
         }
 
         private bool CoOrdinateValidator(string coOrdinate)
@@ -59,7 +52,7 @@ namespace ToyRoboSimulator.Core.Helper
 
         private bool WithinValidRange(byte axisPoint)
         {
-            return axisPoint >= 0 && axisPoint <= 4;
+            return axisPoint <= 4;
         }
     }
 }

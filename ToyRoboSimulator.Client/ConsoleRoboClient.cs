@@ -81,7 +81,7 @@ namespace ToyRoboSimulator.Client
                 string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
                 _simulator.MoveRobo(placeCommand);
                 Console.Clear();
-                Console.Write("Successfully placed the ROBO!! ");
+                Console.Write("Successfully placed the ROBOT!! ");
                 DisplayCommands();
             }
             catch (Exception ex)
