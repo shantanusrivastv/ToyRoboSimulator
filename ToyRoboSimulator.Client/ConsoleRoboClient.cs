@@ -1,5 +1,6 @@
 ﻿using System;
 using ToyRoboSimulator.Core;
+using ToyRoboSimulator.Enums;
 
 namespace ToyRoboSimulator.Client
 {

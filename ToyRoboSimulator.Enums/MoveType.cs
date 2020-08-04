@@ -1,4 +1,4 @@
-﻿namespace ToyRoboSimulator.Core
+﻿namespace ToyRoboSimulator.Enums
 {
     public enum MoveType
     {

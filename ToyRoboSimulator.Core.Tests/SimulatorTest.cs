@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using ToyRoboSimulator.Core.Helper;
+using ToyRoboSimulator.Enums;
 
 namespace ToyRoboSimulator.Core.Tests
 {

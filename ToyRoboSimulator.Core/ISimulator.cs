@@ -1,4 +1,6 @@
-﻿namespace ToyRoboSimulator.Core
+﻿using ToyRoboSimulator.Enums;
+
+namespace ToyRoboSimulator.Core
 {
     public interface ISimulator
     {
