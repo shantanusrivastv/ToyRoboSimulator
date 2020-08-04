@@ -27,7 +27,7 @@ namespace ToyRoboSimulator.Core.Helper
 
         }
 
-        public bool ValidateInput(string command)
+        public bool ValidateInputCommand(string command)
         {
             string[] commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
@@ -41,10 +41,13 @@ namespace ToyRoboSimulator.Core.Helper
             {
                 return ValidateParmeters(commandSplit);
 
+
             }
 
             return Enum.IsDefined(typeof(MoveType), commandType);
         }
+
+
 
         private bool ValidateParmeters(string[] commandSplit)
         {
@@ -58,7 +61,7 @@ namespace ToyRoboSimulator.Core.Helper
             {
                 return CoOrdinateValidator(commandSplit[1]) &&
                        CoOrdinateValidator(commandSplit[2]) &&
-                       Enum.IsDefined(typeof(Directions), commandSplit[3]);
+                       Enum.IsDefined(typeof(Direction), commandSplit[3]);
             }
 
         }

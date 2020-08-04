@@ -6,6 +6,7 @@ using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Core.Tests
 {
+    [TestFixture]
     public class ValidatorTest
     {
 
@@ -26,7 +27,7 @@ namespace ToyRoboSimulator.Core.Tests
         [TestCase("REPORT")]
         public void ShouldReturnTrueForValidCommand(string command)
         {
-            var res = sut.ValidateInput(command);
+            var res = sut.ValidateInputCommand(command);
             Assert.IsTrue(res);
         }
 
@@ -39,7 +40,7 @@ namespace ToyRoboSimulator.Core.Tests
 
         public void ShouldReturnFalseForInvalidValidCommand(string command)
         {
-            var res = sut.ValidateInput(command);
+            var res = sut.ValidateInputCommand(command);
             Assert.IsFalse(res);
         }
     }

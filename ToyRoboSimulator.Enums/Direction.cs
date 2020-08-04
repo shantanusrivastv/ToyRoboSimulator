@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToyRoboSimulator.Core
 {
-    public enum Directions
+    public enum Direction
     {
         NORTH,
         SOUTH,
