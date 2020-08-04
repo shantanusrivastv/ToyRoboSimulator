@@ -8,9 +8,9 @@ namespace ToyRoboSimulator.Client
     {
         private readonly ISimulator _simulator;
 
-        private readonly string instruction =    "Welcome! to Robo Simulator, please note the first command has to be PLACE command, " +
+        private readonly string _instruction =    "Welcome! to Robo Simulator, please note the first command has to be PLACE command, " +
                                                  "for the appliaction to initiate," + Environment.NewLine  +
-                                                 "Only for PLACE command coordinates and direction are required , other commands can be seleted from the list ." +
+                                                 "Only for PLACE command coordinates and direction are required , other commands can be selected from the list ." +
                                                  Environment.NewLine + "Invalid commands will be ignored "+
                                                  Environment.NewLine +
                                                 "please enter your command shown below";
@@ -23,7 +23,7 @@ namespace ToyRoboSimulator.Client
         public void Run()
         {
             Console.Clear();
-            Console.WriteLine(instruction);
+            Console.WriteLine(_instruction);
             DisplayCommands();
 
             while (true)
@@ -80,6 +80,7 @@ namespace ToyRoboSimulator.Client
         private void PlaceCommand()
         {
             Console.WriteLine("You have selected PLACE command please enter the X-Axis, Y-Axis and Facing Direction");
+            Console.WriteLine("Example 0,0,NORTH");
             try
             {
                 string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
