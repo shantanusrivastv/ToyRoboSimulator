@@ -1,7 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ToyRoboSimulator.Core.Tests
 {
@@ -11,7 +8,6 @@ namespace ToyRoboSimulator.Core.Tests
         private Simulator sut;
         private readonly byte xPostion = 0;
         private readonly byte yPostion = 0;
-
 
         [SetUp]
         public void Setup()
@@ -46,8 +42,5 @@ namespace ToyRoboSimulator.Core.Tests
             Assert.AreEqual(4, YAxis);
             Assert.AreEqual(Direction.NORTH, CurrentDirection);
         }
-
-       
-
     }
 }

@@ -2,9 +2,9 @@
 
 namespace ToyRoboSimulator.Client
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Say Hello World!");
             Console.ReadKey();

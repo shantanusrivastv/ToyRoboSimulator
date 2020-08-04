@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Core
@@ -16,6 +12,7 @@ namespace ToyRoboSimulator.Core
             get;
             private set;
         }
+
         public Simulator(string command)
         {
             validator = new Validator();
@@ -31,7 +28,6 @@ namespace ToyRoboSimulator.Core
             }
         }
 
-
         public void MoveRobo(string moveCommand)
         {
             if (validator.ValidateInputCommand(moveCommand))
@@ -40,22 +36,14 @@ namespace ToyRoboSimulator.Core
 
                 switch (requestedMoveType)
                 {
-
                     case MoveType.MOVE:
                         PerformMove();
                         break;
 
-                    
                     default:
                         break;
-
                 }
-
-
             }
-
-
-
         }
 
         private bool PerformMove()
@@ -64,10 +52,10 @@ namespace ToyRoboSimulator.Core
             {
                 case Direction.NORTH:
                     return MoveUP();
+
                 default:
                     return false;
             }
-
         }
 
         private bool MoveUP()
@@ -82,7 +70,6 @@ namespace ToyRoboSimulator.Core
                 return false;
             }
         }
-
 
         private bool SetPosition(string command)
         {
@@ -102,13 +89,6 @@ namespace ToyRoboSimulator.Core
             }
 
             return true;
-
         }
-
-
-
-
-
-
     }
 }

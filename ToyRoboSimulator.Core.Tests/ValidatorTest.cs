@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Core.Tests
@@ -9,8 +6,8 @@ namespace ToyRoboSimulator.Core.Tests
     [TestFixture]
     public class ValidatorTest
     {
-
         private Validator sut;
+
         [SetUp]
         public void Setup()
         {
@@ -37,7 +34,6 @@ namespace ToyRoboSimulator.Core.Tests
         [TestCase("PLACE ,WEST")]
         [TestCase("MOVE 1,2")]
         [TestCase("MOVE LEFT")]
-
         public void ShouldReturnFalseForInvalidValidCommand(string command)
         {
             var res = sut.ValidateInputCommand(command);
