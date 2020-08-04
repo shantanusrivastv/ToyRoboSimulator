@@ -5,7 +5,7 @@ using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Client
 {
-    internal class Program
+    internal static class Program
     {
         private static ServiceProvider _serviceProvider;
 

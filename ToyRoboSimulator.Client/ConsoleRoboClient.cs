@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ToyRoboSimulator.Core;
 
 namespace ToyRoboSimulator.Client
@@ -26,43 +27,55 @@ namespace ToyRoboSimulator.Client
             {
                 try
                 {
-                    string choosenCommand = Console.ReadLine();
-                    MoveType moveChoice = (MoveType)Enum.Parse(typeof(MoveType), choosenCommand);
-                    if (moveChoice == MoveType.PLACE)
+                   bool validNumber = int.TryParse(Console.ReadLine(), out int chosenCommand);
+
+                    if (validNumber &&  Enumerable.Range(0, 5).Contains(chosenCommand))
                     {
-                        Console.WriteLine("You have selected PLACE command please enter the X-Axis, Y-Axis and Facing Direction");
-                        try
+
+                        MoveType moveChoice = (MoveType)chosenCommand;
+                        if (moveChoice == MoveType.PLACE)
                         {
-                            string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
-                            _simulator.MoveRobo(placeCommand);
+                            Console.WriteLine("You have selected PLACE command please enter the X-Axis, Y-Axis and Facing Direction");
+                            try
+                            {
+                                string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
+                                _simulator.MoveRobo(placeCommand);
+                                Console.Clear();
+                                Console.Write("Successfully placed the ROBO!! ");
+                                DisplayCommands();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.Clear();
+                                Console.WriteLine(ex.Message);
+                                Console.WriteLine("Error while parsing the command ");
+                                DisplayCommands();
+                            }
+                        }
+                        else if (moveChoice == MoveType.REPORT)
+                        {
                             Console.Clear();
-                            Console.Write("Successfully placed the ROBO!! ");
+                            var (xAxis, yAxis, currentDirection) = _simulator.MoveRobo(moveChoice.ToString());
+                            Console.WriteLine($"The X-Axis is {xAxis}, Y-Axis is {yAxis} and the direction facing is {currentDirection}");
                             DisplayCommands();
                         }
-                        catch (Exception ex)
+                        else if (chosenCommand == 0)
+                        {
+                            break;
+                        }
+                        else
                         {
                             Console.Clear();
-                            Console.WriteLine(ex.Message);
-                            Console.WriteLine("Error while parsing the command ");
+                            _simulator.MoveRobo(moveChoice.ToString());
+                            Console.Write($"Successfully performed the {moveChoice} command!! ");
                             DisplayCommands();
-                        }
+                        } 
                     }
-                    else if (moveChoice == MoveType.REPORT)
-                    {
-                        Console.Clear();
-                        var (XAxis, YAxis, CurrentDirection) = _simulator.MoveRobo(moveChoice.ToString());
-                        Console.WriteLine($"The X-Axis is {XAxis}, Y-Axis is {YAxis} and the direction facing is {CurrentDirection}");
-                        DisplayCommands();
-                    }
-                    else if (choosenCommand == "0")
-                    {
-                        break;
-                    }
+
                     else
                     {
                         Console.Clear();
-                        _simulator.MoveRobo(moveChoice.ToString());
-                        Console.Write($"Successfully performed the {moveChoice} command!! ");
+                        Console.WriteLine("Invalid Selection please try again");
                         DisplayCommands();
                     }
                 }
@@ -75,7 +88,7 @@ namespace ToyRoboSimulator.Client
             }
         }
 
-        private void DisplayCommands()
+        private static void DisplayCommands()
         {
             Console.WriteLine($"{Environment.NewLine}1: For PLACE Command");
             Console.WriteLine("2: For MOVE Command");

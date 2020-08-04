@@ -16,7 +16,7 @@ namespace ToyRoboSimulator.Core.Helper
             }
             else
             {
-                return ValidateParmeters(commandSplit);
+                return ValidateParameters(commandSplit);
             }
         }
 
@@ -31,13 +31,13 @@ namespace ToyRoboSimulator.Core.Helper
             }
             else if (commandType == MoveType.PLACE.ToString())
             {
-                return ValidateParmeters(commandSplit);
+                return ValidateParameters(commandSplit);
             }
 
             return Enum.IsDefined(typeof(MoveType), commandType);
         }
 
-        private bool ValidateParmeters(string[] commandSplit)
+        private bool ValidateParameters(string[] commandSplit)
         {
             if (commandSplit.Length != 4)
             {
@@ -57,7 +57,7 @@ namespace ToyRoboSimulator.Core.Helper
             return isValid && WithinValidRange(axisPoint);
         }
 
-        public bool WithinValidRange(byte axisPoint)
+        private bool WithinValidRange(byte axisPoint)
         {
             return axisPoint >= 0 && axisPoint <= 4;
         }
