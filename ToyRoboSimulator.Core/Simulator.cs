@@ -31,22 +31,23 @@ namespace ToyRoboSimulator.Core
                     switch (requestedMoveType)
                     {
                         case MoveType.MOVE:
-                            PerformMove();
+                            PerformForwordMove();
                             break;
 
                         case MoveType.PLACE:
-                            PerformPlaceMove(moveCommand);
+                            PerformPlacementMove(moveCommand);
                             break;
 
                         case MoveType.RIGHT:
-                            TurnRight();
+                            PerformRightRotation();
                             break;
 
                         case MoveType.LEFT:
-                            TurnLeft();
+                            PerformLeftRotation();
                             break;
 
                         case MoveType.REPORT:
+                            //Already returning the CurrentPosition
                             break;
                     }
                 }
@@ -72,7 +73,7 @@ namespace ToyRoboSimulator.Core
             }
         }
 
-        private void TurnRight()
+        private void PerformRightRotation()
         {
             int tempDirection = (int)CurrentPosition.CurrentDirection;
             tempDirection = tempDirection == 3 ? 0 : tempDirection + 1;
@@ -80,7 +81,7 @@ namespace ToyRoboSimulator.Core
             CurrentPosition = (CurrentPosition.XAxis, CurrentPosition.YAxis, (Direction)tempDirection);
         }
 
-        private void TurnLeft()
+        private void PerformLeftRotation()
         {
             int tempDirection = (int)CurrentPosition.CurrentDirection;
             tempDirection = tempDirection == 0 ? 3 : tempDirection - 1;
@@ -88,7 +89,7 @@ namespace ToyRoboSimulator.Core
             CurrentPosition = (CurrentPosition.XAxis, CurrentPosition.YAxis, (Direction)tempDirection);
         }
 
-        private void PerformMove()
+        private void PerformForwordMove()
         {
             switch (CurrentPosition.CurrentDirection)
             {
@@ -110,7 +111,7 @@ namespace ToyRoboSimulator.Core
             }
         }
 
-        private void PerformPlaceMove(string command)
+        private void PerformPlacementMove(string command)
         {
             if (_validator.ValidateFirstCommand(command))
             {
