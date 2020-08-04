@@ -23,6 +23,7 @@ namespace ToyRoboSimulator.Client
             var services = new ServiceCollection();
             services.AddTransient<IValidator, Validator>();
             services.AddTransient<ISimulator, Simulator>();
+            services.AddTransient<IRoboMover, RoboMover>();
             services.AddTransient<ConsoleRoboClient>();
             _serviceProvider = services.BuildServiceProvider(true);
         }

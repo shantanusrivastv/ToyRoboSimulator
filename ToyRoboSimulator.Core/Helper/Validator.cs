@@ -8,7 +8,6 @@ namespace ToyRoboSimulator.Core.Helper
     {
         public bool ValidateFirstCommand(string command)
         {
-
             var commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
