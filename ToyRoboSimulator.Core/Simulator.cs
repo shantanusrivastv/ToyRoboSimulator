@@ -48,8 +48,6 @@ namespace ToyRoboSimulator.Core
                         case MoveType.REPORT:
                             break;
 
-                        default:
-                            break;
                     }
                 }
                 return CurrentPosition;
@@ -110,8 +108,8 @@ namespace ToyRoboSimulator.Core
                     MoveLeft();
                     break;
 
-                default:
-                    break;
+                    //default:
+                    //    break;
             }
         }
 
@@ -155,24 +153,13 @@ namespace ToyRoboSimulator.Core
             }
         }
 
-        private bool SetPosition(string command)
+        private void SetPosition(string command)
         {
-            try
-            {
-                string[] commandSplit = command.Split(' ', ',');
-                var nextXAxis = byte.Parse(commandSplit[1]);
-                var nextYAxis = byte.Parse(commandSplit[2]);
-                var direction = (Direction)Enum.Parse(typeof(Direction), commandSplit[3]);
-                CurrentPosition = (nextXAxis, nextYAxis, direction);
-            }
-            catch (Exception)
-            {
-                //Log Error
-
-                return false;
-            }
-
-            return true;
+            string[] commandSplit = command.Split(' ', ',');
+            var nextXAxis = byte.Parse(commandSplit[1]);
+            var nextYAxis = byte.Parse(commandSplit[2]);
+            var direction = (Direction)Enum.Parse(typeof(Direction), commandSplit[3]);
+            CurrentPosition = (nextXAxis, nextYAxis, direction);
         }
     }
 }

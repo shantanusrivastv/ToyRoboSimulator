@@ -113,10 +113,21 @@ namespace ToyRoboSimulator.Core.Tests
             sut.MoveRobo("RIGHT");
             sut.MoveRobo("MOVE");
             sut.MoveRobo("MOVE");
+            sut.MoveRobo("RIGHT");
+            sut.MoveRobo("MOVE");
+            sut.MoveRobo("MOVE");
+            sut.MoveRobo("LEFT");
+            sut.MoveRobo("MOVE");
+            sut.MoveRobo("RIGHT");
+            sut.MoveRobo("MOVE");
+            sut.MoveRobo("RIGHT");
+            sut.MoveRobo("MOVE");
+
+
             var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo("REPORT");
             Assert.AreEqual(2, XAxis);
-            Assert.AreEqual(4, YAxis);
-            Assert.AreEqual(Direction.EAST, CurrentDirection);
+            Assert.AreEqual(1, YAxis);
+            Assert.AreEqual(Direction.WEST, CurrentDirection);
         }
 
         [Test]
