@@ -2,10 +2,11 @@
 
 namespace ToyRoboSimulator.Core.Helper
 {
-    public class Validator
+    public class Validator : IValidator
     {
         public bool ValidateFirstCommand(string command)
         {
+            //TOdoMove to common Property to resuse it
             string[] commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
