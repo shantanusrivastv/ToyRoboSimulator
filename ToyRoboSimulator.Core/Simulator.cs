@@ -52,13 +52,8 @@ namespace ToyRoboSimulator.Core
                         default:
                             break;
                     }
-
-                    return CurrentPosition;
                 }
-                else
-                {
-                    throw new Exception("Invalid Move Command");
-                }
+                return CurrentPosition;
             }
             else
             {
@@ -73,12 +68,11 @@ namespace ToyRoboSimulator.Core
             {
                 SetPosition(command);
                 hasApplicationInitialised = true;
-                //continue
+
             }
             else
             {
-                //Make Custom Exception
-                //throw new Exception("InValid Command");
+                hasApplicationInitialised = false;
             }
         }
 

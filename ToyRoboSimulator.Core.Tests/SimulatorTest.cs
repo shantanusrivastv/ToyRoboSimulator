@@ -20,7 +20,10 @@ namespace ToyRoboSimulator.Core.Tests
         [TestCase("MOVE")]
         public void ShouldThrowExceptionIfFirstCommandIsNotPLACE(string command)
         {
-            Assert.Throws<Exception>(() => sut.MoveRobo(command));
+            var (XAxis, YAxis, CurrentDirection) = sut.MoveRobo(command);
+            Assert.AreEqual(default(byte), XAxis);
+            Assert.AreEqual(default(byte), YAxis);
+            Assert.AreEqual(Direction.SOUTH, CurrentDirection);
         }
 
         [TestCase("MOVE", 4)]

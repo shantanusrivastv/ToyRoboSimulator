@@ -9,7 +9,7 @@ namespace ToyRoboSimulator.Client
     {
         private static ServiceProvider _serviceProvider;
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             RegisterServices();
             IServiceScope scope = _serviceProvider.CreateScope();
