@@ -33,7 +33,6 @@ namespace ToyRoboSimulator.Client
                         Console.WriteLine("You have selected PLACE command please enter the X-Axis, Y-Axis and Facing Direction");
                         try
                         {
-
                             string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
                             _simulator.MoveRobo(placeCommand);
                             Console.Clear();
@@ -66,17 +65,13 @@ namespace ToyRoboSimulator.Client
                         Console.Write($"Successfully performed the {moveChoice} command!! ");
                         DisplayCommands();
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     Console.Clear();
                     Console.WriteLine($" {ex.Message} {Environment.NewLine} Error while parsing the command, please try again ");
                     DisplayCommands();
-
                 }
-
             }
         }
 

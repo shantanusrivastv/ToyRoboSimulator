@@ -19,7 +19,6 @@ namespace ToyRoboSimulator.Core
             _validator = validator;
         }
 
-
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string moveCommand)
         {
             if (hasApplicationInitialised)
@@ -68,7 +67,6 @@ namespace ToyRoboSimulator.Core
             {
                 SetPosition(command);
                 hasApplicationInitialised = true;
-
             }
             else
             {
