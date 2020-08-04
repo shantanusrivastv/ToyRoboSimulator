@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ToyRoboSimulator.Core;
 
 namespace ToyRoboSimulator.Client
 {
-    public class ConsoleApplication
+    public class ConsoleRoboClient
     {
         private readonly ISimulator _simulator;
-        public ConsoleApplication(ISimulator simulator)
+
+        public ConsoleRoboClient(ISimulator simulator)
         {
             _simulator = simulator;
         }

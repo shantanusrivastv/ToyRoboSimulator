@@ -7,6 +7,7 @@ namespace ToyRoboSimulator.Core
     {
         private readonly IValidator _validator;
         private bool hasApplicationInitialised = false;
+
         private (byte XAxis, byte YAxis, Direction CurrentDirection) CurrentPosition
         {
             get;
@@ -32,8 +33,6 @@ namespace ToyRoboSimulator.Core
         //        throw new Exception("InValid Command");
         //    }
         //}
-
-
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string moveCommand)
         {
@@ -70,20 +69,16 @@ namespace ToyRoboSimulator.Core
 
                     return CurrentPosition;
                 }
-
                 else
                 {
                     throw new Exception("Invalid Move Command");
                 }
             }
-
             else
             {
                 CheckIfFirstCommandIsPLACE(moveCommand);
                 return CurrentPosition;
             }
-
-
         }
 
         private void CheckIfFirstCommandIsPLACE(string command)

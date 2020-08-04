@@ -5,14 +5,15 @@ using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Client
 {
-    class Program
+    internal class Program
     {
         private static ServiceProvider _serviceProvider;
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             RegisterServices();
             IServiceScope scope = _serviceProvider.CreateScope();
-            scope.ServiceProvider.GetRequiredService<ConsoleApplication>().Run();
+            scope.ServiceProvider.GetRequiredService<ConsoleRoboClient>().Run();
             DisposeServices();
             Console.WriteLine("Click key to close the console");
             Console.ReadKey();
@@ -23,7 +24,7 @@ namespace ToyRoboSimulator.Client
             var services = new ServiceCollection();
             services.AddTransient<IValidator, Validator>();
             services.AddTransient<ISimulator, Simulator>();
-            services.AddTransient<ConsoleApplication>();
+            services.AddTransient<ConsoleRoboClient>();
             _serviceProvider = services.BuildServiceProvider(true);
         }
 
