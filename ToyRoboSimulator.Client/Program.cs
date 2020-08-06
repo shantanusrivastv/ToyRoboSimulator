@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using ToyRoboSimulator.Core;
+using ToyRoboSimulator.Core.Commands;
 using ToyRoboSimulator.Core.Helper;
 
 namespace ToyRoboSimulator.Client
@@ -23,7 +24,6 @@ namespace ToyRoboSimulator.Client
             var services = new ServiceCollection();
             services.AddTransient<IValidator, Validator>();
             services.AddTransient<ISimulator, Simulator>();
-            services.AddTransient<IRoboMover, RoboMover>();
             services.AddTransient<ConsoleRoboClient>();
             services.AddSingleton<ICommandFactory, CommandFactory>();
             _serviceProvider = services.BuildServiceProvider(true);

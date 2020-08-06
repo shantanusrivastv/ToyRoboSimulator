@@ -1,7 +1,7 @@
 ﻿using System;
 using ToyRoboSimulator.Enums;
 
-namespace ToyRoboSimulator.Core
+namespace ToyRoboSimulator.Core.Commands
 {
     public class MoveCommand : ICommand
     {

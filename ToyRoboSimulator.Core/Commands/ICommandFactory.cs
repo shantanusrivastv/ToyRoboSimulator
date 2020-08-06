@@ -1,6 +1,6 @@
 ﻿using ToyRoboSimulator.Enums;
 
-namespace ToyRoboSimulator.Core
+namespace ToyRoboSimulator.Core.Commands
 {
     public interface ICommandFactory
     {

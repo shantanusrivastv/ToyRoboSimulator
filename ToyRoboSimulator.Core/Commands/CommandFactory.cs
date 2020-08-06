@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using ToyRoboSimulator.Enums;
 
-namespace ToyRoboSimulator.Core
+namespace ToyRoboSimulator.Core.Commands
 {
     public class CommandFactory : ICommandFactory
     {

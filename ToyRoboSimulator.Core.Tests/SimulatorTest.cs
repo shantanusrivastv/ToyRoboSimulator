@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using ToyRoboSimulator.Core.Commands;
 using ToyRoboSimulator.Core.Helper;
 using ToyRoboSimulator.Enums;
 
@@ -14,7 +15,7 @@ namespace ToyRoboSimulator.Core.Tests
         [SetUp]
         public void Setup()
         {
-            _sut = new Simulator(new Validator(), new RoboMover(), new CommandFactory());
+            _sut = new Simulator(new Validator(),  new CommandFactory());
         }
 
         [TestCase("MOVE")]

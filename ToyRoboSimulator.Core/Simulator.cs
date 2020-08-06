@@ -1,4 +1,5 @@
 ﻿using System;
+using ToyRoboSimulator.Core.Commands;
 using ToyRoboSimulator.Core.Helper;
 using ToyRoboSimulator.Enums;
 
@@ -7,9 +8,8 @@ namespace ToyRoboSimulator.Core
     public class Simulator : ISimulator
     {
         private readonly IValidator _validator;
-        private readonly IRoboMover _roboMover;
         private bool _hasApplicationInitialised;
-        private ICommandFactory _commandFactory;
+        private readonly ICommandFactory _commandFactory;
 
         private (byte XAxis, byte YAxis, Direction CurrentDirection) CurrentPosition
         {
@@ -17,10 +17,9 @@ namespace ToyRoboSimulator.Core
             set;
         }
 
-        public Simulator(IValidator validator, IRoboMover roboMover, ICommandFactory commandFactory)
+        public Simulator(IValidator validator, ICommandFactory commandFactory)
         {
             _validator = validator;
-            _roboMover = roboMover;
             _commandFactory = commandFactory;
         }
 
@@ -36,7 +35,6 @@ namespace ToyRoboSimulator.Core
                     ICommand command = _commandFactory.CreateCommand(commandType);
                     command.PreviousPosition = CommandType.PLACE != commandType ? CurrentPosition : SetPostion(inputCommand);
                     CurrentPosition = command.Execute();
-                    //NewPosition = _roboMover.PerformMove(commandText);
                 }
             }
             else
