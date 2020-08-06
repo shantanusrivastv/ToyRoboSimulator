@@ -60,7 +60,7 @@ namespace ToyRoboSimulator.Core
         {
             if (_validator.ValidateFirstCommand(command))
             {
-                _roboMover.SetPosition(command);
+                CurrentPosition = SetPostion(command);
                 _hasApplicationInitialised = true;
             }
             else
