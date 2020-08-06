@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToyRoboSimulator.Enums;
 
 namespace ToyRoboSimulator.Core
@@ -72,8 +68,5 @@ namespace ToyRoboSimulator.Core
                 PreviousPosition = (Convert.ToByte(PreviousPosition.XAxis + 1), PreviousPosition.YAxis, PreviousPosition.CurrentDirection);
             }
         }
-
-
     }
 }
-

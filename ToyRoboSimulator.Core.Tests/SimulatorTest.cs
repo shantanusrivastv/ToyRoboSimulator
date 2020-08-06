@@ -76,7 +76,7 @@ namespace ToyRoboSimulator.Core.Tests
             _sut.MoveRobo(moveCommand);
 
             var (xAxis, yAxis, currentDirection) = _sut.MoveRobo("REPORT");
-            Assert.AreEqual(_xPosition +1 , xAxis);
+            Assert.AreEqual(_xPosition + 1, xAxis);
             Assert.AreEqual(_yPosition, yAxis);
             Assert.AreEqual(Direction.EAST, currentDirection);
         }
@@ -90,8 +90,8 @@ namespace ToyRoboSimulator.Core.Tests
             Assert.AreEqual(_xPosition, xAxis);
             Assert.AreEqual(0, yAxis);
             Assert.AreEqual(Direction.WEST, currentDirection);
-        } 
-        
+        }
+
         [TestCase("LEFT", "MOVE")]
         public void ShouldRotateLeftAndMove(string rotationCommand, string moveCommand)
         {
