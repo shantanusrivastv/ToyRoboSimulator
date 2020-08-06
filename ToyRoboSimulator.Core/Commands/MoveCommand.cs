@@ -5,7 +5,7 @@ namespace ToyRoboSimulator.Core.Commands
 {
     public class MoveCommand : ICommand
     {
-        public (byte XAxis, byte YAxis, Direction CurrentDirection) PreviousPosition
+        public (byte XAxis, byte YAxis, Direction direction) PreviousPosition
         {
             get;
             set;
@@ -13,9 +13,9 @@ namespace ToyRoboSimulator.Core.Commands
 
         public CommandType CommandType => CommandType.MOVE;
 
-        public (byte XAxis, byte YAxis, Direction CurrentDirection) Execute()
+        public (byte newXAxis, byte newYAxis, Direction newDirection) Execute()
         {
-            switch (PreviousPosition.CurrentDirection)
+            switch (PreviousPosition.direction)
             {
                 case Direction.NORTH:
                     MoveUp();
@@ -41,7 +41,7 @@ namespace ToyRoboSimulator.Core.Commands
         {
             if (PreviousPosition.YAxis < 4)
             {
-                PreviousPosition = (PreviousPosition.XAxis, Convert.ToByte(PreviousPosition.YAxis + 1), PreviousPosition.CurrentDirection);
+                PreviousPosition = (PreviousPosition.XAxis, Convert.ToByte(PreviousPosition.YAxis + 1), PreviousPosition.direction);
             }
         }
 
@@ -49,7 +49,7 @@ namespace ToyRoboSimulator.Core.Commands
         {
             if (PreviousPosition.YAxis >= 1)
             {
-                PreviousPosition = (PreviousPosition.XAxis, Convert.ToByte(PreviousPosition.YAxis - 1), PreviousPosition.CurrentDirection);
+                PreviousPosition = (PreviousPosition.XAxis, Convert.ToByte(PreviousPosition.YAxis - 1), PreviousPosition.direction);
             }
         }
 
@@ -57,7 +57,7 @@ namespace ToyRoboSimulator.Core.Commands
         {
             if (PreviousPosition.XAxis >= 1)
             {
-                PreviousPosition = (Convert.ToByte(PreviousPosition.XAxis - 1), PreviousPosition.YAxis, PreviousPosition.CurrentDirection);
+                PreviousPosition = (Convert.ToByte(PreviousPosition.XAxis - 1), PreviousPosition.YAxis, PreviousPosition.direction);
             }
         }
 
@@ -65,7 +65,7 @@ namespace ToyRoboSimulator.Core.Commands
         {
             if (PreviousPosition.XAxis < 4)
             {
-                PreviousPosition = (Convert.ToByte(PreviousPosition.XAxis + 1), PreviousPosition.YAxis, PreviousPosition.CurrentDirection);
+                PreviousPosition = (Convert.ToByte(PreviousPosition.XAxis + 1), PreviousPosition.YAxis, PreviousPosition.direction);
             }
         }
     }
