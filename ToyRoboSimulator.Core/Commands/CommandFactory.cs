@@ -25,7 +25,7 @@ namespace ToyRoboSimulator.Core.Commands
                 _hasInitialised = true;
             }
 
-            return CommandList.Where(x => x.CommandType == commandType).SingleOrDefault();
+            return CommandList.Where(x => x.CommandType == commandType).SingleOrDefault() ?? new NotFoundCommand();
         }
     }
 }

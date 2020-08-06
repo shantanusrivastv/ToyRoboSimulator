@@ -2,6 +2,7 @@
 {
     public enum CommandType
     {
+        NONE =-1,
         PLACE = 1,
         MOVE,
         LEFT,
