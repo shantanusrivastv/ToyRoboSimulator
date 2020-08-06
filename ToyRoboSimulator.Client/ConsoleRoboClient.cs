@@ -9,7 +9,7 @@ namespace ToyRoboSimulator.Client
         private readonly ISimulator _simulator;
 
         private readonly string _instruction = "Welcome! to Robo Simulator, please note the first command has to be PLACE command, " +
-                                                 "for the appliaction to initiate," + Environment.NewLine +
+                                                 "for the application to initiate," + Environment.NewLine +
                                                  "Only for PLACE command coordinates and direction are required , other commands can be selected from the list ." +
                                                  Environment.NewLine + "Invalid commands will be ignored " +
                                                  Environment.NewLine +

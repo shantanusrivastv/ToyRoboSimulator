@@ -20,7 +20,7 @@ namespace ToyRoboSimulator.Core.Commands
                                                   !x.IsAbstract && !x.IsInterface))
                                             .ToList();
 
-                //Creating a list for resuse
+                //Creating a list for reuse
                 CommandList = commandList.Select(x => Activator.CreateInstance(x) as ICommand).ToList();
                 _hasInitialised = true;
             }
