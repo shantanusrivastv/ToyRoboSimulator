@@ -1,6 +1,6 @@
 ﻿namespace ToyRoboSimulator.Enums
 {
-    public enum MoveType
+    public enum CommandType
     {
         PLACE = 1,
         MOVE,

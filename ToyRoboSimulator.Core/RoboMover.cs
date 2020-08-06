@@ -13,27 +13,27 @@ namespace ToyRoboSimulator.Core
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) PerformMove(string moveCommand)
         {
-            Enum requestedMoveType = (MoveType)Enum.Parse(typeof(MoveType), moveCommand.Split(' ', ',')[0]);
+            Enum requestedMoveType = (CommandType)Enum.Parse(typeof(CommandType), moveCommand.Split(' ', ',')[0]);
 
             switch (requestedMoveType)
             {
-                case MoveType.MOVE:
+                case CommandType.MOVE:
                     PerformForwordMove();
                     break;
 
-                case MoveType.PLACE:
+                case CommandType.PLACE:
                     PerformPlacementMove(moveCommand);
                     break;
 
-                case MoveType.RIGHT:
+                case CommandType.RIGHT:
                     PerformRightRotation();
                     break;
 
-                case MoveType.LEFT:
+                case CommandType.LEFT:
                     PerformLeftRotation();
                     break;
 
-                case MoveType.REPORT:
+                case CommandType.REPORT:
                     //Already returning the CurrentPosition
                     break;
             }

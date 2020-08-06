@@ -25,6 +25,7 @@ namespace ToyRoboSimulator.Client
             services.AddTransient<ISimulator, Simulator>();
             services.AddTransient<IRoboMover, RoboMover>();
             services.AddTransient<ConsoleRoboClient>();
+            services.AddSingleton<ICommandFactory, CommandFactory>();
             _serviceProvider = services.BuildServiceProvider(true);
         }
 

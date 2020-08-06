@@ -34,23 +34,23 @@ namespace ToyRoboSimulator.Client
 
                     if (validNumber && chosenCommand <= 5)
                     {
-                        MoveType moveChoice = (MoveType)chosenCommand;
+                        CommandType moveChoice = (CommandType)chosenCommand;
                         switch (moveChoice)
                         {
-                            case MoveType.PLACE:
+                            case CommandType.PLACE:
                                 PlaceCommand();
                                 break;
 
-                            case MoveType.REPORT:
+                            case CommandType.REPORT:
                                 var (xAxis, yAxis, currentDirection) = _simulator.MoveRobo(moveChoice.ToString());
                                 Console.Clear();
                                 Console.WriteLine($"The X-Axis is {xAxis}, Y-Axis is {yAxis} and the direction facing is {currentDirection}");
                                 DisplayCommands();
                                 break;
 
-                            case MoveType.LEFT:
-                            case MoveType.RIGHT:
-                            case MoveType.MOVE:
+                            case CommandType.LEFT:
+                            case CommandType.RIGHT:
+                            case CommandType.MOVE:
                                 _simulator.MoveRobo(moveChoice.ToString());
                                 Console.Clear();
                                 Console.Write($"Successfully performed the {moveChoice} command!! ");
@@ -83,7 +83,7 @@ namespace ToyRoboSimulator.Client
             Console.WriteLine("Example 0,0,NORTH");
             try
             {
-                string placeCommand = string.Concat(nameof(MoveType.PLACE), " ", Console.ReadLine());
+                string placeCommand = string.Concat(nameof(CommandType.PLACE), " ", Console.ReadLine());
                 _simulator.MoveRobo(placeCommand);
                 Console.Clear();
                 Console.Write("Successfully placed the ROBOT!! ");

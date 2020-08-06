@@ -11,7 +11,7 @@ namespace ToyRoboSimulator.Core.Helper
             var commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
-            if (commandType != MoveType.PLACE.ToString() && commandSplit.Length != 4)
+            if (commandType != CommandType.PLACE.ToString() && commandSplit.Length != 4)
             {
                 return false;
             }
@@ -24,12 +24,12 @@ namespace ToyRoboSimulator.Core.Helper
             var commandSplit = command.Split(' ', ',');
             string commandType = commandSplit[0];
 
-            if (commandType != MoveType.PLACE.ToString() && commandSplit.Length > 1)
+            if (commandType != CommandType.PLACE.ToString() && commandSplit.Length > 1)
             {
                 return false;
             }
 
-            return commandType == MoveType.PLACE.ToString() ? ValidateParameters(commandSplit) : Enum.IsDefined(typeof(MoveType), commandType);
+            return commandType == CommandType.PLACE.ToString() ? ValidateParameters(commandSplit) : Enum.IsDefined(typeof(CommandType), commandType);
         }
 
         private bool ValidateParameters(IReadOnlyList<string> commandSplit)

@@ -14,7 +14,7 @@ namespace ToyRoboSimulator.Core.Tests
         [SetUp]
         public void Setup()
         {
-            _sut = new Simulator(new Validator(), new RoboMover());
+            _sut = new Simulator(new Validator(), new RoboMover(), new CommandFactory());
         }
 
         [TestCase("MOVE")]
