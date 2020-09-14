@@ -8,7 +8,7 @@ namespace ToyRoboSimulator.Core
     public class Simulator : ISimulator
     {
         private readonly IValidator _validator;
-        private bool _hasApplicationInitialised;
+        private bool _hasRoboBeenPlaced;
         private readonly ICommandFactory _commandFactory;
 
         private (byte XAxis, byte YAxis, Direction CurrentDirection) CurrentPosition
@@ -25,7 +25,7 @@ namespace ToyRoboSimulator.Core
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string inputCommand)
         {
-            if (_hasApplicationInitialised)
+            if (_hasRoboBeenPlaced)
             {
                 if (_validator.ValidateInputCommand(inputCommand))
                 {
@@ -59,11 +59,11 @@ namespace ToyRoboSimulator.Core
             if (_validator.ValidateFirstCommand(command))
             {
                 CurrentPosition = SetPostion(command);
-                _hasApplicationInitialised = true;
+                _hasRoboBeenPlaced = true;
             }
             else
             {
-                _hasApplicationInitialised = false;
+                _hasRoboBeenPlaced = false;
             }
         }
     }

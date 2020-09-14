@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using ToyRoboSimulator.Core;
 using ToyRoboSimulator.Core.Commands;
@@ -26,6 +27,8 @@ namespace ToyRoboSimulator.Client
             services.AddTransient<ISimulator, Simulator>();
             services.AddTransient<ConsoleRoboClient>();
             services.AddSingleton<ICommandFactory, CommandFactory>();
+            services.AddLogging(cfg => cfg.AddConsole());
+            //services.AddLogging(cfg => cfg.AddEventLog(x=> x.SourceName = "SHantanu"));
             _serviceProvider = services.BuildServiceProvider(true);
         }
 

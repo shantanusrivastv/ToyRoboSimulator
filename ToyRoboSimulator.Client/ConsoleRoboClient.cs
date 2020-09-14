@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using ToyRoboSimulator.Core;
 using ToyRoboSimulator.Enums;
 
@@ -7,6 +8,7 @@ namespace ToyRoboSimulator.Client
     public class ConsoleRoboClient
     {
         private readonly ISimulator _simulator;
+        private readonly ILogger<ConsoleRoboClient> _logger;
 
         private readonly string _instruction = "Welcome! to Robo Simulator, please note the first command has to be PLACE command, " +
                                                  "for the application to initiate," + Environment.NewLine +
@@ -15,13 +17,15 @@ namespace ToyRoboSimulator.Client
                                                  Environment.NewLine +
                                                 "please enter your command shown below";
 
-        public ConsoleRoboClient(ISimulator simulator)
+        public ConsoleRoboClient(ISimulator simulator, ILogger<ConsoleRoboClient> logger)
         {
+            _logger = logger;
             _simulator = simulator;
         }
 
         public void Run()
         {
+            //_logger.LogInformation("Sample Log");
             Console.Clear();
             Console.WriteLine(_instruction);
             DisplayCommands();
