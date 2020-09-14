@@ -25,7 +25,9 @@ namespace ToyRoboSimulator.Client
 
         public void Run()
         {
-            //_logger.LogInformation("Sample Log");
+            //var sampleStructureLogging = new string[] { "Kumar Shantanu" };
+            //_logger.LogInformation("Test");
+            //_logger.LogError("Structure Logging example from  {A} ", sampleStructureLogging);
             Console.Clear();
             Console.WriteLine(_instruction);
             DisplayCommands();

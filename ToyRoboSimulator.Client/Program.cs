@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using ToyRoboSimulator.Core;
 using ToyRoboSimulator.Core.Commands;
@@ -13,6 +14,7 @@ namespace ToyRoboSimulator.Client
 
         private static void Main()
         {
+            SetupSeriLog();
             RegisterServices();
             IServiceScope scope = _serviceProvider.CreateScope();
             scope.ServiceProvider.GetRequiredService<ConsoleRoboClient>().Run();
@@ -27,9 +29,22 @@ namespace ToyRoboSimulator.Client
             services.AddTransient<ISimulator, Simulator>();
             services.AddTransient<ConsoleRoboClient>();
             services.AddSingleton<ICommandFactory, CommandFactory>();
-            services.AddLogging(cfg => cfg.AddConsole());
-            //services.AddLogging(cfg => cfg.AddEventLog(x=> x.SourceName = "SHantanu"));
+
+            services.AddLogging(cfg =>
+            {
+                cfg.AddConsole();
+                cfg.AddSerilog();
+                //cfg.AddEventLog(x => x.SourceName = "Shantanu")
+            });
+
             _serviceProvider = services.BuildServiceProvider(true);
+        }
+
+        private static void SetupSeriLog()
+        {
+            Log.Logger = new LoggerConfiguration()
+                            .WriteTo.File("logs\\log.txt")
+                            .CreateLogger();
         }
 
         private static void DisposeServices()
