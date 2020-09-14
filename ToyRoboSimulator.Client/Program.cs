@@ -45,6 +45,17 @@ namespace ToyRoboSimulator.Client
             Log.Logger = new LoggerConfiguration()
                             .WriteTo.File("logs\\log.txt")
                             .CreateLogger();
+
+            //We can also use to read from configuration like
+            /*
+             * var configuration = new ConfigurationBuilder()   
+				.AddJsonFile("appsettings.json")
+				.Build();
+
+            Log.Logger = new LoggerConfiguration()
+				.ReadFrom.Configuration(configuration)
+				.CreateLogger();
+             * */
         }
 
         private static void DisposeServices()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using ToyRoboSimulator.Core.Commands;
 using ToyRoboSimulator.Core.Helper;
 using ToyRoboSimulator.Enums;
@@ -10,6 +11,7 @@ namespace ToyRoboSimulator.Core
         private readonly IValidator _validator;
         private bool _hasRoboBeenPlaced;
         private readonly ICommandFactory _commandFactory;
+        private readonly ILogger<Simulator> _logger;
 
         private (byte XAxis, byte YAxis, Direction CurrentDirection) CurrentPosition
         {
@@ -17,10 +19,11 @@ namespace ToyRoboSimulator.Core
             set;
         }
 
-        public Simulator(IValidator validator, ICommandFactory commandFactory)
+        public Simulator(IValidator validator, ICommandFactory commandFactory, ILogger<Simulator> logger)
         {
             _validator = validator;
             _commandFactory = commandFactory;
+            _logger = logger;
         }
 
         public (byte XAxis, byte YAxis, Direction CurrentDirection) MoveRobo(string inputCommand)
@@ -29,6 +32,8 @@ namespace ToyRoboSimulator.Core
             {
                 if (_validator.ValidateInputCommand(inputCommand))
                 {
+                    _logger.LogInformation("Input command: {inputCommand} is valid", inputCommand);
+
                     string[] commandSplit = inputCommand.Split(' ', ',');
                     Enum.TryParse(commandSplit[0], out CommandType commandType);
 

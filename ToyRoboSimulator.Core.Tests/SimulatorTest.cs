@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.Extensions.Logging;
+using NUnit.Framework;
 using ToyRoboSimulator.Core.Commands;
 using ToyRoboSimulator.Core.Helper;
 using ToyRoboSimulator.Enums;
@@ -15,7 +16,9 @@ namespace ToyRoboSimulator.Core.Tests
         [SetUp]
         public void Setup()
         {
-            _sut = new Simulator(new Validator(),  new CommandFactory());
+            using var loggerFactory = LoggerFactory.Create(x=>x.AddConsole());
+            var logger = loggerFactory.CreateLogger<Simulator>();
+            _sut = new Simulator(new Validator(),  new CommandFactory(), logger);
         }
 
         [TestCase("MOVE")]
